@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Ihra/Ihra.vcxproj" Id="18a2dae2-c12e-4bae-bfa9-24f7e66b5883" />
+</Solution>
