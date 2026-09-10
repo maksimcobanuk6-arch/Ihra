@@ -23,10 +23,19 @@ public:
     void use() override {
         cout << "Постріл з лука!\n";
     }
+
     string getName() override {
         return "Лук";
     }
 };
+int main() {
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+
+    cout << "===== ПРИГОДНИЦЬКА ГРА =====\n";
+
+    return 0;
+}
 class MagicStaff : public Weapon {
 public:
     void use() override {
@@ -42,7 +51,6 @@ public:
     void use() override {
         cout << "Швидка атака кинджалом!\n";
     }
-
     string getName() override {
         return "Кинджал";
     }
@@ -51,7 +59,6 @@ class Character {
 protected:
     string name;
     Weapon* weapon = nullptr;
-
 public:
     Character(string n) : name(n) {}
     void setWeapon(Weapon* w) {
@@ -73,9 +80,3 @@ public:
     virtual void info() = 0;
     virtual ~Character() {}
 };
-int main() {
-    SetConsoleCP(CP_UTF8);
-    SetConsoleOutputCP(CP_UTF8);
-    cout << "===== ПРИГОДНИЦЬКА ГРА =====\n";
-    return 0;
-}
