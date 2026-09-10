@@ -28,14 +28,7 @@ public:
         return "Лук";
     }
 };
-int main() {
-    SetConsoleCP(CP_UTF8);
-    SetConsoleOutputCP(CP_UTF8);
 
-    cout << "===== ПРИГОДНИЦЬКА ГРА =====\n";
-
-    return 0;
-}
 class MagicStaff : public Weapon {
 public:
     void use() override {
@@ -80,3 +73,73 @@ public:
     virtual void info() = 0;
     virtual ~Character() {}
 };
+class Warrior : public Character {
+public:
+    Warrior() : Character("Воїн") {}
+
+    void info() override {
+        cout << "Сильний персонаж ближнього бою.\n";
+    }
+};
+class Archer : public Character {
+public:
+    Archer() : Character("Лучник") {}
+
+    void info() override {
+        cout << "Атакує ворогів на відстані.\n";
+    }
+};
+class Mage : public Character {
+public:
+    Mage() : Character("Маг") {}
+
+    void info() override {
+        cout << "Використовує магічні атаки.\n";
+    }
+};
+class Assassin : public Character {
+public:
+    Assassin() : Character("Асасин") {}
+    void info() override {
+        cout << "Швидкий персонаж прихованої атаки.\n";
+    }
+};
+int main() {
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+
+    cout << "===== ПРИГОДНИЦЬКА ГРА =====\n";
+    Sword sword;
+    Bow bow;
+    MagicStaff staff;
+    Dagger dagger;
+
+    Warrior warrior;
+    Archer archer;
+    Mage mage;
+    Assassin assassin;
+
+    Character* player = nullptr;
+
+    int c;
+
+    cout << "===== ПРИГОДНИЦЬКА ГРА =====\n";
+    cout << "1. Воїн\n2. Лучник\n3. Маг\n4. Асасин\n";
+
+    cout << "Виберіть персонажа: ";
+    cin >> c;
+
+    if (c == 1)
+        player = &warrior;
+    else if (c == 2)
+        player = &archer;
+    else if (c == 3)
+        player = &mage;
+    else if (c == 4)
+        player = &assassin;
+    else
+        return 0;
+
+    cout << "\nВи вибрали: " << player->getName() << endl;
+    return 0;
+}
