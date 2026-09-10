@@ -118,17 +118,12 @@ int main() {
     Archer archer;
     Mage mage;
     Assassin assassin;
-
     Character* player = nullptr;
-
     int c;
-
     cout << "===== ПРИГОДНИЦЬКА ГРА =====\n";
     cout << "1. Воїн\n2. Лучник\n3. Маг\n4. Асасин\n";
-
     cout << "Виберіть персонажа: ";
     cin >> c;
-
     if (c == 1)
         player = &warrior;
     else if (c == 2)
@@ -139,7 +134,41 @@ int main() {
         player = &assassin;
     else
         return 0;
+    do {
+        system("cls");
 
-    cout << "\nВи вибрали: " << player->getName() << endl;
+        cout << "===== ГРА =====\n";
+        cout << "Персонаж: " << player->getName() << endl;
+        cout << "Зброя: " << player->getWeapon() << endl;
+
+        cout << "\n1. Інформація";
+        cout << "\n2. Вибрати зброю";
+        cout << "\n3. Атакувати";
+        cout << "\n0. Вихід";
+        cout << "\nВаш вибір: ";
+        cin >> c;
+        if (c == 1) {
+            player->info();
+            system("pause");
+        }
+        else if (c == 2) {
+            cout << "\n1. Меч\n2. Лук\n3. Магічний посох\n4. Кинджал\n";
+            cin >> c;
+            if (c == 1)
+                player->setWeapon(&sword);
+            else if (c == 2)
+                player->setWeapon(&bow);
+            else if (c == 3)
+                player->setWeapon(&staff);
+            else if (c == 4)
+                player->setWeapon(&dagger);
+            system("pause");
+        }
+        else if (c == 3) {
+            player->attack();
+            system("pause");
+        }
+    } while (c != 0);
+    cout << "\nДякуємо за гру!\n";
     return 0;
 }
