@@ -27,6 +27,52 @@ public:
         return "Лук";
     }
 };
+class MagicStaff : public Weapon {
+public:
+    void use() override {
+        cout << "Магічна атака!\n";
+    }
+
+    string getName() override {
+        return "Магічний посох";
+    }
+};
+class Dagger : public Weapon {
+public:
+    void use() override {
+        cout << "Швидка атака кинджалом!\n";
+    }
+
+    string getName() override {
+        return "Кинджал";
+    }
+};
+class Character {
+protected:
+    string name;
+    Weapon* weapon = nullptr;
+
+public:
+    Character(string n) : name(n) {}
+    void setWeapon(Weapon* w) {
+        weapon = w;
+        cout << "Зброя: " << weapon->getName() << endl;
+    }
+    void attack() {
+        if (weapon)
+            weapon->use();
+        else
+            cout << "У вас немає зброї!\n";
+    }
+    string getName() {
+        return name;
+    }
+    string getWeapon() {
+        return weapon ? weapon->getName() : "Немає";
+    }
+    virtual void info() = 0;
+    virtual ~Character() {}
+};
 int main() {
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
